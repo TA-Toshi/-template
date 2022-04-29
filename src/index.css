@@ -44,7 +44,6 @@ body{
     margin-bottom: 18px;
     margin-top: 0px;
     padding: 0 24px;
-    fill: #fff;
     position: relative;
     box-sizing: border-box;
 }
@@ -97,9 +96,7 @@ body{
 .left_bar_array_li:hover path {
     fill: rgb(255, 255, 255);
 }
-.left_bar_array_li svg{
-    fill: rgb(177, 177, 177);
-}
+
 .left_bar_nav{
     position: sticky;
     left: 0;
@@ -156,7 +153,6 @@ body{
     align-items: center;
     background: linear-gradient(135deg,#450af5,#c4efd9);
     border-radius: 1px;
-    fill: rgb(255, 255, 255);
     color: rgb(255, 255, 255);
     display: flex;
     height: 100%;
@@ -261,9 +257,7 @@ body{
     width: 32px;
     margin-right: 16px;   
 }
-.but_top_bar svg{
-    fill: rgb(207, 207, 207);
-}
+
 .butLog_top_bar{
     align-items: center;
     display: flex;
@@ -415,6 +409,7 @@ body{
     right: 15px;
     bottom: 15px;
 }
+
 .pl_button:active{
     background-color: #1abc53be;;
 }
