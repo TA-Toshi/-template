@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Category = (props: { data: any }) => {
+const Category = (props: { data: never[] }) => {
     if (props.data !== []) {
         return (
             <div className="main_Pl">
@@ -10,7 +10,7 @@ const Category = (props: { data: any }) => {
                     </h2>
                     <div className="main_Pl">
                         <div className="pl_list">
-                            {props.data.map((element: any) =>
+                            {props.data.map((element: any ) =>
                                 <div className="playlists" key={element.id}>
                                     <div className="pl_png_button">
                                         <div className="png_Pl">
