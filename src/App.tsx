@@ -6,40 +6,28 @@ import Search from './Search';
 import LeftBar from './LeftBar';
 import Footer from './Footer';
 export const ForSearch = React.createContext<string>("");
+import useToken from './Token';
 
 function App() {
 
     let ClientId = "e580bfc31e834052b28dd8c82a1168ad"
     let ClientSecret = "286f5e1d0c594e5c8409484cdd2e3a41"
 
-
-    const [token, setToken] = useState('');
     const [category, setCategory] = useState([]);
 
+    let Tok = ''
+    Tok  =  useToken('q')
+    console.log(Tok)
+    
 
     useEffect(() => {
         
-        fetch("https://accounts.spotify.com/api/token", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Basic ' + btoa(ClientId + ':' + ClientSecret)
-            },
-            body: 'grant_type=client_credentials'
-        }).then((result) => {
-            if (!result.ok) {
-                return Promise.reject(result.status);
-            }
-            else {
-                return result.json();
-            }
-        }).then((data) => {
-            setToken(data.access_token);
+        if (Tok != '') {
 
             fetch('https://api.spotify.com/v1/browse/categories', {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + data.access_token
+                    'Authorization': 'Bearer ' + Tok
                 }
             }).then((result) => {
                 if (!result.ok) {
@@ -52,15 +40,13 @@ function App() {
                 setCategory(data.categories.items);
             })
 
-        }).catch(function (error) {
-            console.log(error);
-        })
-    }, [ClientId])
+        }
+    }, [Tok]);
 
     return (
         <div className="App">
             <Router>
-                <ForSearch.Provider value={token}>
+                <ForSearch.Provider value={Tok}>
                     <header className="left-bar">
                         <LeftBar />
                     </header>

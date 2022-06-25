@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Category = (props: { data: never[] }) => {
-    if (props.data !== []) {
+const Category = (props: { data: string[] }) => {
+    if (props.data.length !== 0) {
         return (
             <div className="main_Pl">
                 <article className="article_Pl">
