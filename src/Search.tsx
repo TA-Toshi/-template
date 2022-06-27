@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { ForSearch } from './App';
+import ElementType from './ElementType';
 
-const Search = (props: any) => {
+const Search = () => {
     const [item, setItem] = useState('');
     const [arrayItem, setArrayItem] = useState([]);
     const token = useContext(ForSearch);
 
-    const setValue = (event: any) => {
-        setItem(event.target.value)
+    const setValue = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        setItem((event.target as HTMLInputElement).value)
     }
 
     useEffect(() => {
@@ -40,7 +41,7 @@ const Search = (props: any) => {
         else {
             return (
                 <div className="search_result">
-                    {arrayItem.map((element: any) =>
+                    {arrayItem.map((element: ElementType) =>
                         <div className="search_container_result" key={element.id}>
                             <a>
                                 <img className="search_container_result_img" src={element.album.images[0].url}></img>

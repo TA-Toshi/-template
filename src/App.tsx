@@ -7,42 +7,16 @@ import LeftBar from './LeftBar';
 import Footer from './Footer';
 export const ForSearch = React.createContext<string>("");
 import useToken from './Token';
+import Error from './Error';
+
 
 function App() {
-
-    let ClientId = "e580bfc31e834052b28dd8c82a1168ad"
-    let ClientSecret = "286f5e1d0c594e5c8409484cdd2e3a41"
 
     const [category, setCategory] = useState([]);
 
     let Tok = ''
     Tok  =  useToken('q')
-    console.log(Tok)
     
-
-    useEffect(() => {
-        
-        if (Tok != '') {
-
-            fetch('https://api.spotify.com/v1/browse/categories', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + Tok
-                }
-            }).then((result) => {
-                if (!result.ok) {
-                    return Promise.reject(result.status);
-                }
-                else {
-                    return result.json();
-                }
-            }).then((data) => {
-                setCategory(data.categories.items);
-            })
-
-        }
-    }, [Tok]);
-
     return (
         <div className="App">
             <Router>
@@ -73,9 +47,11 @@ function App() {
                             </div>
                         </nav>
                         <Routes>
-                            <Route path='/category' element={<Category data={category} />}>
+                            <Route path='/category' element={<Category />}>
                             </Route>
                             <Route path='/' element={<Main/>}>
+                            </Route>
+                            <Route path='/error:status' element={<Error/>}>
                             </Route>
                         </Routes>
                     </main>

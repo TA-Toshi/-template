@@ -1,7 +1,11 @@
 import React from 'react';
+import Hook from './Hook';
 
-const Category = (props: { data: string[] }) => {
-    if (props.data.length !== 0) {
+
+const Category = () => {
+    
+    let data = Hook('https://api.spotify.com/v1/browse/categories')
+    if (data !== null) {
         return (
             <div className="main_Pl">
                 <article className="article_Pl">
@@ -10,7 +14,7 @@ const Category = (props: { data: string[] }) => {
                     </h2>
                     <div className="main_Pl">
                         <div className="pl_list">
-                            {props.data.map((element: any ) =>
+                            {data.categories?.items.map((element) =>
                                 <div className="playlists" key={element.id}>
                                     <div className="pl_png_button">
                                         <div className="png_Pl">
