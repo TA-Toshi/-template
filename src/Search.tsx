@@ -1,23 +1,28 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { ForSearch } from './App';
+
 import ElementType from './ElementType';
+import useToken from './Token';
 
 const Search = () => {
     const [item, setItem] = useState('');
     const [arrayItem, setArrayItem] = useState([]);
-    const token = useContext(ForSearch);
+    
+
+    let Tok = ''
+    Tok  =  useToken()
+
 
     const setValue = (event: React.KeyboardEvent<HTMLInputElement>) => {
         setItem((event.target as HTMLInputElement).value)
     }
 
     useEffect(() => {
-        if (item != "" && token !== '') {
+        if (item != "" && Tok !== '') {
             fetch('https://api.spotify.com/v1/search?q=track:+' + item + '++&type=track', {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + token
+                    'Authorization': 'Bearer ' + Tok
                 }
             }).then((result) => {
                 if (!result.ok) {
@@ -32,7 +37,7 @@ const Search = () => {
                 console.log(error);
             });
         }
-    }, [item, token])
+    }, [item, Tok])
 
     const searchResult = () => {
         if (item == "") {

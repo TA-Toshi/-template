@@ -12,10 +12,10 @@ import Error from './Error';
 
 function App() {
 
-    const [category, setCategory] = useState([]);
+    // const [category, setCategory] = useState([]);
 
     let Tok = ''
-    Tok  =  useToken('q')
+    Tok  =  useToken()
     
     return (
         <div className="App">

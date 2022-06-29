@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 
-function useToken(query:string){
+function useToken(){
 
     const [data, setData] = useState('');
 
@@ -26,7 +26,7 @@ function useToken(query:string){
             }
         }).then((data) => {
             setData(data.access_token);
-    })},[query]);
+    })},[]);
 
     return data;
 }

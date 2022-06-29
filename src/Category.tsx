@@ -1,10 +1,10 @@
 import React from 'react';
-import Hook from './Hook';
+import useLink from './Hook';
 
 
 const Category = () => {
     
-    let data = Hook('https://api.spotify.com/v1/browse/categories')
+    let data = useLink('https://api.spotify.com/v1/browse/categories')
     if (data !== null) {
         return (
             <div className="main_Pl">

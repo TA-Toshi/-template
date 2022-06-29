@@ -23,9 +23,7 @@ return(
         <h1 className="Error">Error!</h1>
         <h2 className="Error">{error}</h2> 
         <Link className="ErrorHome" to="/">
-            <span className="ErrorHome">
-                Перейти на Главную
-            </span>
+            Перейти на Главную
         </Link>
     </div>
 )}

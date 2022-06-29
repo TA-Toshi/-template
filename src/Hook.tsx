@@ -3,12 +3,12 @@ import useToken from './Token';
 import Type from './CatType'
 import { useNavigate } from "react-router-dom";
 
-function Hook(link:string){
+function useLink(link:string){
 
     const [data, setData] = useState<Type>({} as Type);
 
     let Tok = ''
-    Tok  =  useToken('q')
+    Tok  =  useToken()
 
     let Navigate = useNavigate()
 
@@ -36,4 +36,4 @@ function Hook(link:string){
 
     return data;
 }
-export default Hook; 
+export default useLink; 
